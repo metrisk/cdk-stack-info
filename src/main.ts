@@ -11,6 +11,8 @@ async function cdkStackInfo() {
       delete artifacts.Tree
       const artifactsKeys = Object.keys(artifacts)
       const stackname = artifactsKeys[0]
+      core.info(artifacts)
+      core.info(stackname)
       core.setOutput("cdk-stackname", stackname)
       return
     } else {
