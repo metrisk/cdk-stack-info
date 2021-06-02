@@ -1,0 +1,7 @@
+name: 'CDK Stack Info'
+description: 'Obtain CDK stack information'
+author: 'Metrisk'
+inputs:
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
