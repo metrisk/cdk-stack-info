@@ -10,7 +10,12 @@ async function cdkStackInfo() {
       const { artifacts } = require(manifestFilePath)
       delete artifacts.Tree
       const artifactsKeys = Object.keys(artifacts)
-      const stackname = artifactsKeys[0]
+      /* 
+      * Function names in AWS Lambda cannot exceed 64 characters, by limiting the
+      * stack name to 30 characters, it gives the function name 34 characters.
+      */
+      const desiredNameLength = 30
+      const stackname = artifactsKeys[0].length > desiredNameLength ? artifactsKeys[0].substring(0, desiredNameLength) : artifactsKeys[0]
       core.info(artifacts)
       core.info(stackname)
       core.setOutput("cdk-stackname", stackname)
